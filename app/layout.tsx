@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Press_Start_2P } from "next/font/google";
 import "./globals.css";
+import { UserProvider } from "@/lib/user-context";
 
 const pressStart2P = Press_Start_2P({
   weight: "400",
@@ -33,7 +34,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="av-noise" aria-hidden="true" />
         {/* App frame — all page content lives inside #root */}
         <div id="root">
-          <div className="av-main">{children}</div>
+          <div className="av-main">
+            <UserProvider>{children}</UserProvider>
+          </div>
         </div>
       </body>
     </html>
